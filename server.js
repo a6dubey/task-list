@@ -65,9 +65,11 @@ app.post('/register', async (req, res) => {
     const newUser = new User({ username, password });
     await newUser.save();
     console.log(newUser);
-    res.json({ success: true, message: 'User registered successfully', user});
+    res.json({ success: true, message: 'User registered successfully', newUser });
+
   } catch (error) {
-    res.json({ success: true, message: 'User registered successfully',user });
+    res.json({ success: false, message: 'Failed to register user', error });
+
   }
 });
 
